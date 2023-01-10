@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Customer Login</h1>
-<form action="customer.php" method="post">
+<form action="customer_homepage.php" method="post">
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username"><br>
     <label for="password">Password:</label><br>
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (mysqli_num_rows($result) == 1) {
         // The login is successful
         // Redirect the user to the customer page
-        header('location: customer.php');
+        header('location: customer_homepage.php');
     } else {
         // The login is unsuccessful
         // Show an error message
