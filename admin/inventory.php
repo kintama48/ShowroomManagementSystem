@@ -16,7 +16,7 @@
     </tr>
     <?php
     // Include the code to retrieve the list of vehicles from the database
-    include 'get_vehicles.php';
+    include './ShowroomManagementSystem/customer/get_vehicles.php';
 
     // Iterate through the list of vehicles and display them in a table
     foreach ($vehicles as $vehicle) {
@@ -34,7 +34,7 @@
     ?>
 </table>
 <h2>Add Vehicle</h2>
-<form action="add_vehicle.php" method="post">
+<form action="add_vehicles.php" method="post">
     <label for="make">Make:</label><br>
     <input type="text" id="make" name="make"><br>
     <label for="model">Model:</label><br>
@@ -42,6 +42,17 @@
     <label for="year">Year:</label><br>
     <input type="number" id="year" name="year" min="1900" max="2050"><br><br>
     <input type="submit" value="Add Vehicle">
+</form><br><br>
+<h2>Add Part</h2>
+<form action="add_parts.php" method="post">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="price">Price:</label><br>
+    <input type="number" id="price" name="price"><br>
+    <label for="quantity">Quantity:</label><br>
+    <input type="number" id="quantity" name="quantity"><br><br>
+    <input type="submit" value="Add Part">
 </form>
+
 </body>
 </html>

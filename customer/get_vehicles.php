@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$db = mysqli_connect('localhost', 'my_user', 'my_password', 'my_db');
+$db = mysqli_connect('localhost', 'mysql', '', 'test');
 
 // Retrieve the list of vehicles from the database
 $query = "SELECT * FROM vehicles";

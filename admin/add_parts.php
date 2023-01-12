@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$db = mysqli_connect('localhost', 'my_user', 'my_password', 'my_db');
+$db = mysqli_connect('localhost', 'mysql', '', 'test');
 
 // Check if the form has been submitted
 if (isset($_POST['name']) && isset($_POST['price']) && isset($_POST['quantity'])) {
