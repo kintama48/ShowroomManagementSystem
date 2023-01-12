@@ -1,0 +1,47 @@
+body {
+    
+        background-image: url("../assets/bg.jpg");
+
+}
+
+input{
+    border-radius: 14px;
+    height: 45px;
+    width: 280px;
+    margin:10px;
+    padding: 5px;
+    background-color: rgb(203, 240, 228);
+
+}
+
+#login-button{
+    
+    width: 100px;
+    background-color: rgb(130, 192, 171);
+    
+}
+
+input[type=text]:focus {
+    border: 3px solid #555;
+  }
+
+#main-div{
+    padding: 5%;
+
+
+}
+
+#userpass {
+    border: 1px solid black;
+    margin-left: 30%;
+
+    width: 35%;
+    height: 500px;
+
+    background-color: #263541;
+    border-radius: 25px 5px;
+    color: whitesmoke;
+    text-align: center;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+

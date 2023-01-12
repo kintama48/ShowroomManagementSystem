@@ -25,47 +25,37 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-        body {
-            background-color: dodgerblue;
-        }
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./stylesheets/main_login.css">
 
-        form {
-            width: 300px;
-        }
+        <title>Lab 12</title>
+    </head>
+    <body>
+        <div id = "main-div" class = "container">
+            <div id="userpass">
 
-        label, input {
-            display: block;
-            margin: 5px 0;
-        }
+                <form action="" method="post">
+                        <br>
+                        <h2>LOGIN</h2>
+                        <h5 style = "color:slategrey;">Please enter your username and password</h5> 
+                        <br><br>
+                        <input type="text" placeholder="Username" id="username" name="username" >
+                        <br>
+                        <input type="password" placeholder="Password" id="password" name="password">
+                        <a  style = "color:slategrey; " href="#">Forgot Password?</a>
+                        <br>
+                        <input type="submit" id="login-button"value="Login">
+                        <br><br>
+                        <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-facebook"></a>
+                        <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-twitter"></a>
+                        <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-instagram"></a>
 
-        #userpass {
-            border: 1px solid black;
-            padding: 5%;
-            background-color: mediumpurple;
-            color: black;
-            font-family: "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
-            margin-top: 25%;
-            margin-left: 150%;
-            width: 125%;
-        }
+                </form>
+            </div>
+        </div>
 
-    </style>
-    <title>Lab 12</title>
-</head>
-<body>
-<form action="" method="post">
-    <div id="userpass">
-        <h1>User Authentication</h1>
-        <label for="username" style="font-weight: bold">Username:</label>
-        <input type="text" id="username" name="username">
-        <br>
-        <label for="password" style="font-weight: bold">Password:</label>
-        <input type="password" id="password" name="password">
-        <br>
-        <input type="submit" value="Login">
-    </div>
-</form>
-</body>
+    </body>
 </html>
