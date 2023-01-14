@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+// https://chat.openai.com/chat/21840481-72c4-4474-a354-e1ab899b66a9
+
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];

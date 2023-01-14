@@ -24,7 +24,6 @@
                     <th>Year</th>
                     <th>Action</th>
                 </thead>
-
             </tr>
 
             <tr>
