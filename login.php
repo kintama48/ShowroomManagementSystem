@@ -33,20 +33,20 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="./stylesheets/main_login.css">
 
-        <title>Lab 12</title>
+        <title>Showroom Management System</title>
     </head>
     <body>
         <div id = "main-div" class = "container">
             <div id="userpass">
-
-                <form action="" method="post">
+                <form action="login_validation.php" method="post">
                         <br>
                         <h2>LOGIN</h2>
-                        <h5 style = "color:slategrey;">Please enter your username and password</h5> 
+                        <h5 style = "color:slategrey;">Input Username and Password</h5> 
                         <br><br>
-                        <input type="text" placeholder="Username" id="username" name="username" >
+                        <input type="text" placeholder="Username: admin | customer" id="username" name="username" >
                         <br>
-                        <input type="password" placeholder="Password" id="password" name="password">
+                        <input type="password" placeholder="Password: admin | abcd" id="password" name="password">
+                        <br>
                         <a  style = "color:slategrey; " href="#">Forgot Password?</a>
                         <br>
                         <input type="submit" id="login-button"value="Login">
@@ -54,7 +54,6 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                         <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-facebook"></a>
                         <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-twitter"></a>
                         <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-instagram"></a>
-
                 </form>
             </div>
         </div>

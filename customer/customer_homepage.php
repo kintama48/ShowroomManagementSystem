@@ -1,4 +1,4 @@
-<!-- customer.php -->
+    <!-- customer.php -->
 <html lang="en">
 <head>
     <title>Customer Page</title>
