@@ -87,7 +87,7 @@
 
     <div id = "main-div" class = "container">
         <div id = "vehicle-form">
-            <form id = "add-vehicle" action="add_vehicles.php" method="post">
+            <form id = "add-vehicle" action="../db/add_vehicles.php" method="post">
                 <h2 style="padding: 5%;">Add Vehicle</h2>
                 <label for="make">Make:</label><br>
                 <input type="text" id="make" name="make"><br>
@@ -100,7 +100,7 @@
         </div>
 
         <div id = "part-form">
-            <form id = "add-part" action="add_parts.php" method="post">
+            <form id = "add-part" action="../db/add_parts.php" method="post">
             <h2 style="padding: 5%;">Add Part</h2>
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name"><br>
