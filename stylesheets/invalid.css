@@ -1,0 +1,22 @@
+body {
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    text-align:center;
+    background-image: url("../assets/bg.jpg");
+    display:flex;
+    flex-direction: column;
+}
+
+
+.container{
+    background-color: rgb(245, 245, 245,.8);
+    display: flex; justify-content: center;width: 60%; 
+    height: 60%; margin: auto; border: 3px solid black;
+}
+
+button{
+    width: 100px;
+    height: 40px; 
+    border-radius: 20px; 
+    font-weight: bold;
+}
+
