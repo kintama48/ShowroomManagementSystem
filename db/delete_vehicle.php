@@ -1,4 +1,5 @@
 <?php
+
 $db = mysqli_connect('localhost', 'mysql', '', 'test');
 // Check if the form has been submitted
 if (isset($_POST['vehicle_id'])) {
@@ -9,7 +10,7 @@ if (isset($_POST['vehicle_id'])) {
     $result = mysqli_query($db, $query) or die(mysql_error());
 
 // Redirect the user to the inventory page
-    header("Location: inventory.php");
+    header("Location: ../admin/inventory.php");
     exit();
 }
 
@@ -25,17 +26,27 @@ mysqli_close($db);
 <body>
 <div class="container">
     <h1>Delete Vehicle</h1>
+    <?php
+        $id = $_GET['id'];
+        $db = mysqli_connect('localhost', 'mysql', '', 'test');
+        $query = "select * from vehicles where id='$id'";
+        $result = mysqli_query($db, $query);
+        $vehicles=array();
+        while ($vehicle = mysqli_fetch_assoc($result)) {
+            $vehicles[] = $vehicle;
+        }
+    ?>
     <form action="delete_vehicle.php" method="post">
-        <input type="hidden" name="vehicle_id" value="<?php echo $vehicle['id']; ?>">
+        <input type="hidden" name="vehicle_id" value="<?php echo $vehicles[0]['id']; ?>">
         <p>Are you sure you want to delete this vehicle?</p>
         <label for="make">Make:</label>
-        <input type="text" id="make" name="make" value="<?php echo $vehicle['make']; ?>" disabled>
+        <input type="text" id="make" name="make" value="<?php echo $vehicles[0]['make']; ?>" disabled>
         <br>
         <label for="model">Model:</label>
-        <input type="text" id="model" name="model" value="<?php echo $vehicle['model']; ?>" disabled>
+        <input type="text" id="model" name="model" value="<?php echo $vehicles[0]['model']; ?>" disabled>
         <br>
         <label for="year">Year:</label>
-        <input type="number" id="year" name="year" value="<?php echo $vehicle['year']; ?>" disabled>
+        <input type="number" id="year" name="year" value="<?php echo $vehicles[0]['year']; ?>" disabled>
         <br>
         <input type="submit" value="Delete Vehicle">
     </form>

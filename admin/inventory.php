@@ -7,6 +7,9 @@
 <!--    <link rel="stylesheet" href="../stylesheets/inventory.css">-->
 </head>
 <body>
+    <a href="../login.php">
+        <img alt="logout" style="width: 50px;height: 50px;" src="../assets/logout.png">
+    </a>
     <div class="container">
         <div style = "background-color: rgb(245, 245, 245,.8);">
             <h1 style="font-weight: bold;">Inventory Page</h1>
@@ -31,13 +34,13 @@
                     // Iterate through the list of vehicles and display them in a table
                     foreach ($vehicles as $vehicle) {
                         echo "<tr>";
-                        echo "<td>" . $vehicle['id'] . "</td>";
+                        echo "<td>#" . $vehicle['id'] . "</td>";
                         echo "<td>" . $vehicle['make'] . "</td>";
                         echo "<td>" . $vehicle['model'] . "</td>";
                         echo "<td>" . $vehicle['year'] . "</td>";
                         echo "<td>";
-                        echo "<a href='edit_vehicle.php?id=" . $vehicle['id'] . "'>Edit</a> | ";
-                        echo "<a href='delete_vehicle.php?id=" . $vehicle['id'] . "'>Delete</a>";
+                        echo "<a href='../db/edit_vehicle.php?id=" . $vehicle['id'] . "'>Edit</a> | ";
+                        echo "<a href='../db/delete_vehicle.php?id=" . $vehicle['id'] . "'>Delete</a>";
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -68,13 +71,13 @@
                 // Iterate through the list of parts and display them in a table
                 foreach ($parts as $part) {
                     echo "<tr>";
-                    echo "<td>" . $part['id'] . "</td>";
+                    echo "<td>#" . $part['id'] . "</td>";
                     echo "<td>" . $part['name'] . "</td>";
-                    echo "<td>" . $part['price'] . "</td>";
+                    echo "<td>" . $part['price'] . "$</td>";
                     echo "<td>" . $part['quantity'] . "</td>";
                     echo "<td>";
-                    echo "<a href='edit_part.php?id=" . $part['id'] . "'>Edit</a> | ";
-                    echo "<a href='delete_part.php?id=" . $part['id'] . "'>Delete</a>";
+                    echo "<a href='../db/edit_part.php?id=" . $part['id'] . "'>Edit</a> | ";
+                    echo "<a href='../db/delete_part.php?id=" . $part['id'] . "'>Delete</a>";
                     echo "</td>";
                     echo "</tr>";
                 }
@@ -105,7 +108,7 @@
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name"><br>
                 <label for="price">Price:</label><br>
-                <input type="number" id="price" name="price"><br>
+                <input type="text" id="price" name="price"><br>
                 <label for="quantity">Quantity:</label><br>
                 <input type="number" id="quantity" name="quantity"><br><br>
                 <input id = "part-button" style="font-weight: bold;border-radius: 50px; background-color: dodgerblue; color: black;" type="submit" value="Add Part">

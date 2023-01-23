@@ -105,7 +105,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             <input type="password" placeholder="Password" id="password" name="password">
             <a  style = "color:slategrey; " href="#">Forgot Password?</a>
             <br>
-            <input type="submit" id="login-button"value="Login">
+            <input type="submit" style="font-weight: bold;border-radius: 50px; background-color: dodgerblue; color: black;" id="login-button"value="Login">
             <br><br>
             <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-facebook"></a>
             <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-twitter"></a>

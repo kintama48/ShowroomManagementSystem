@@ -1,35 +1,44 @@
 <?php
+function jsLogs($data, $isExit) {
+    $html = "";
+    $coll = '';
+
+    if (is_array($data) || is_object($data)) {
+        $coll = json_encode($data);
+    } else {
+        $coll = $data;
+    }
+
+    $html = "<script id='jsLogs'>console.log('PHP: ${coll}');</script>";
+
+    echo($html);
+
+    if ($isExit) exit();
+}
+
 // Connect to the database
 $db = mysqli_connect('localhost', 'mysql', '', 'test');
 if (mysqli_connect_errno()) {
     echo "Connect failed: %s\n", mysqli_connect_error();
     exit();
 }
-
+jsLogs($_POST, false);
 // Check if the form has been submitted
 if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])) {
     // Retrieve the form data and sanitize it
     $make = mysqli_real_escape_string($db, $_POST['make']);
     $model = mysqli_real_escape_string($db, $_POST['model']);
     $year = mysqli_real_escape_string($db, $_POST['year']);
-    $id = mysqli_real_escape_string($db, $_GET['id']);
+    $id = mysqli_real_escape_string($db, $_POST['vehicle_id']);
 
     if (empty($make) || empty($model) || empty($year) || empty($id)) {
-        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
-                <h1 style="">Make, Model and Year fields are required</h1>
-                <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
-                        <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;">Go Back</button>
-                  </a>
-              </div>';
+        header("Location: ../admin/invalid_input_edit_vehicles.php");
     } else {
+        jsLogs('here2', false);
         $query = "UPDATE vehicles SET make='$make', model='$model', year='$year' WHERE id='$id'";
         $result = mysqli_query($db, $query) or die(mysql_error());
-        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
-                        <h1 style="">Vehicle Modified Successfully</h1>
-                        <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
-                            <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;">Go Back</button>
-                        </a>
-                      </div>';
+        header("Location: ../admin/success_edit_vehicles.php");
+
     }
 }
 ?>
@@ -44,16 +53,27 @@ if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])) {
 <body>
 <div class="container">
     <h1>Edit Vehicle</h1>
+
+    <?php
+        $id = $_GET['id'];
+        $query = "select * from vehicles where id='$id'";
+        $result = mysqli_query($db, $query);
+        $vehicles=array();
+        while ($vehicle = mysqli_fetch_assoc($result)) {
+            $vehicles[] = $vehicle;
+        }
+    ?>
+
     <form action="edit_vehicle.php" method="post">
-<!--        <input type="hidden" name="vehicle_id" value="--><?php //echo $vehicle['id']; ?><!--">-->
+        <input type="hidden" name="vehicle_id" value="<?php echo $vehicles[0]['id']; ?>">
         <label for="make">Make:</label>
-        <input type="text" id="make" name="make" value="<?php echo $vehicle['make']; ?>">
+        <input type="text" id="make" name="make" value="<?php echo $vehicles[0]['make']; ?>">
         <br>
         <label for="model">Model:</label>
-        <input type="text" id="model" name="model" value="<?php echo $vehicle['model']; ?>">
+        <input type="text" id="model" name="model" value="<?php echo $vehicles[0]['model']; ?>">
         <br>
         <label for="year">Year:</label>
-        <input type="text" id="year" name="year" value="<?php echo $vehicle['year']; ?>">
+        <input type="text" id="year" name="year" value="<?php echo $vehicles[0]['year']; ?>">
         <br>
         <input type="submit" value="Save Changes">
     </form>
