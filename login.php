@@ -16,6 +16,8 @@ function init_tables() {
             `make` varchar(255) NOT NULL,
             `model` varchar(255) NOT NULL,
             `year` int(11) NOT NULL,
+            `price` float(11) NOT NULL,
+            `quantity` int(11) NOT NULL,
             PRIMARY KEY (`id`)
         ) AUTO_INCREMENT=1 ;";
     $query .= "CREATE TABLE IF NOT EXISTS `orders` (
@@ -39,13 +41,13 @@ function init_tables() {
                     ('admin', 'admin', 'admin'),
                     ('customer', 'abcd', 'customer');";
 
-    $query .= "INSERT INTO `vehicles` (`make`, `model`, `year`) VALUES
-            ('Ford', 'Fusion', 2018),
-            ('Ford', 'Mustang', 2018),
-            ('Honda', 'Accord', 2018),
-            ('Honda', 'Civic', 2018),
-            ('Toyota', 'Camry', 2018),
-            ('Toyota', 'Corolla', 2018);";
+    $query .= "INSERT INTO `vehicles` (`make`, `model`, `year`, `price`, `quantity`) VALUES
+               ('Ford', 'Fusion', 2018, 20000, 10),
+                ('Ford', 'Mustang', 2018, 16300, 10),
+                ('Honda', 'Accord', 2018, 1500, 5),
+                ('Honda', 'Civic', 2018, 20000, 6),
+                ('Toyota', 'Camry', 2018, 7000, 8),
+                ('Toyota', 'Corolla', 2018, 10000, 10);";
     $query .= "INSERT INTO `parts` (`name`, `price`, `quantity`) VALUES
             ('Tires', 100, 10),
             ('Brakes', 200, 10),
@@ -65,6 +67,9 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
+    $_SESSION['username'] = $username;
+    $_SESSION['password'] = $password;
+
     $query = "SELECT role FROM users WHERE username = '$username' AND password = '$password'";
     $result = mysqli_query($db, $query);
 
@@ -77,7 +82,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             header("Location: customer/customer_homepage.php");
         }
     } else {
-        echo "Invalid username or password";
+        header("Location: invalid_login.php");
     }
 }
 ?>
@@ -105,7 +110,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             <input type="password" placeholder="Password" id="password" name="password">
             <a  style = "color:slategrey; " href="#">Forgot Password?</a>
             <br>
-            <input type="submit" style="font-weight: bold;border-radius: 50px; background-color: dodgerblue; color: black;" id="login-button"value="Login">
+            <input type="submit" style="font-weight: bold;border-radius: 50px; background-color: dodgerblue; color: black;" id="login-button" value="Login">
             <br><br>
             <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-facebook"></a>
             <a style = " text-decoration: none;color:slategrey;"href="#" class="fa fa-twitter"></a>

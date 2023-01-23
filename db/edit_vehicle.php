@@ -22,23 +22,22 @@ if (mysqli_connect_errno()) {
     echo "Connect failed: %s\n", mysqli_connect_error();
     exit();
 }
-jsLogs($_POST, false);
 // Check if the form has been submitted
-if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])) {
+if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year']) && isset($_POST['price']) && isset($_POST['quantity'])) {
     // Retrieve the form data and sanitize it
     $make = mysqli_real_escape_string($db, $_POST['make']);
     $model = mysqli_real_escape_string($db, $_POST['model']);
     $year = mysqli_real_escape_string($db, $_POST['year']);
+    $price = mysqli_real_escape_string($db, $_POST['price']);
+    $quantity = mysqli_real_escape_string($db, $_POST['quantity']);
     $id = mysqli_real_escape_string($db, $_POST['vehicle_id']);
 
-    if (empty($make) || empty($model) || empty($year) || empty($id)) {
+    if (empty($make) || empty($model) || empty($year) || empty($id) || empty($price) || empty($quantity)) {
         header("Location: ../admin/invalid_input_edit_vehicles.php");
     } else {
-        jsLogs('here2', false);
-        $query = "UPDATE vehicles SET make='$make', model='$model', year='$year' WHERE id='$id'";
+        $query = "UPDATE vehicles SET make='$make', model='$model', year='$year', price='$price', quantity='$quantity' WHERE id='$id'";
         $result = mysqli_query($db, $query) or die(mysql_error());
         header("Location: ../admin/success_edit_vehicles.php");
-
     }
 }
 ?>
@@ -74,6 +73,12 @@ if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])) {
         <br>
         <label for="year">Year:</label>
         <input type="text" id="year" name="year" value="<?php echo $vehicles[0]['year']; ?>">
+        <br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" value="<?php echo $vehicles[0]['price']; ?>">
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="<?php echo $vehicles[0]['quantity']; ?>">
         <br>
         <input type="submit" value="Save Changes">
     </form>

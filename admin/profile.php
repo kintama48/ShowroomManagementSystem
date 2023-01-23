@@ -26,7 +26,7 @@
     </table>
     <br>
     <div class="go-back-button">
-        <a href="customer_homepage.php"><button>Go Back</button></a>
+        <a href="inventory.php"><button>Go Back</button></a>
     </div>
 </div>
 </body>

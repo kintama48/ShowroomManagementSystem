@@ -26,18 +26,19 @@ function jsLogs($data, $isExit) {
 }
 
 // Check if the form has been submitted
-if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])) {
+if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year']) && isset($_POST['price']) && isset($_POST['quantity'])) {
     // Retrieve the form data and sanitize it
         $make = mysqli_real_escape_string($db, $_POST['make']);
         $model = mysqli_real_escape_string($db, $_POST['model']);
         $year = (int) mysqli_real_escape_string($db, $_POST['year']);
-
+        $price = (float) mysqli_real_escape_string($db, $_POST['price']);
+        $quantity = (int) mysqli_real_escape_string($db, $_POST['quantity']);
 
 //    jsLogs("${make}, ${model}, ${year}", false);
     // Perform form validation
-    if (empty($make) || empty($model) || empty($year)) {
+    if (empty($make) || empty($model) || empty($year) || empty($price) || empty($quantity)) {
         echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
-                <h1 style="">Make, Model and Year fields are required</h1>
+                <h1 style="">Empty Fields Not Allowed</h1>
                 <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
                         <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;">Go Back</button>
                   </a>
@@ -54,7 +55,8 @@ if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])) {
                     </a>
                   </div>';
         } else {
-            $query = "INSERT INTO vehicles (make, model, year) VALUES ('$make', '$model', $year)";
+            $query = "INSERT INTO vehicles (make, model, year, price, quantity) 
+                    VALUES ('$make', '$model', $year, $price, $quantity)";
             $result = mysqli_query($db, $query);
 
             if ($result) {
@@ -74,18 +76,18 @@ if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])) {
             }
         }
     }
-    if(empty($result)) {
-        $query2 = "CREATE TABLE vehicles (make varchar(255) NOT NULL, model varchar(255) NOT NULL, year int NOT NULL, id mediumint NOT NULL AUTO_INCREMENT, PRIMARY KEY (id));";
-        $result2 = mysqli_query($db, $query2);
-        $query1 = "INSERT INTO vehicles (make, model, year) VALUES ('$make', '$model', $year)";
-        $result1 = mysqli_query($db, $query1);
-        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
-                  <h1>Vehicle Added Successfully</h1>
-                  <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
-                        <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;>Go Back</button>
-                  </a>
-              </div>';
-    }
+//    if(empty($result)) {
+//        $query2 = "CREATE TABLE vehicles (make varchar(255) NOT NULL, model varchar(255) NOT NULL, year int NOT NULL, id mediumint NOT NULL AUTO_INCREMENT, PRIMARY KEY (id));";
+//        $result2 = mysqli_query($db, $query2);
+//        $query1 = "INSERT INTO vehicles (make, model, year) VALUES ('$make', '$model', $year)";
+//        $result1 = mysqli_query($db, $query1);
+//        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
+//                  <h1>Vehicle Added Successfully</h1>
+//                  <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
+//                        <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;>Go Back</button>
+//                  </a>
+//              </div>';
+//    }
 }
 ?>
 

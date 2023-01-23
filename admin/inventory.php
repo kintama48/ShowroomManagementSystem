@@ -7,13 +7,16 @@
 <!--    <link rel="stylesheet" href="../stylesheets/inventory.css">-->
 </head>
 <body>
-    <a href="../login.php">
-        <img alt="logout" style="width: 50px;height: 50px;" src="../assets/logout.png">
-    </a>
     <div class="container">
         <div style = "background-color: rgb(245, 245, 245,.8);">
             <h1 style="font-weight: bold;">Inventory Page</h1>
             <h2 style="font-weight: bold;">Vehicles</h2>
+            <a href="../login.php" style="position: absolute; top: 25px; left: 80%;">
+                <img alt="logout" style="width: 50px;height: 50px;" src="../assets/logout.png">
+            </a>
+            <a href="profile.php" style="position: absolute; top: 25px; left: 85%;">
+                <img alt="logout" style="width: 50px;height: 50px;" src="../assets/account.png">
+            </a>
         </div>
         <table class ="styled-table">
             <tr>
@@ -22,6 +25,8 @@
                     <th>Make</th>
                     <th>Model</th>
                     <th>Year</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
                     <th>Action</th>
                 </thead>
             </tr>
@@ -38,6 +43,8 @@
                         echo "<td>" . $vehicle['make'] . "</td>";
                         echo "<td>" . $vehicle['model'] . "</td>";
                         echo "<td>" . $vehicle['year'] . "</td>";
+                        echo "<td>" . $vehicle['price'] . "$</td>";
+                        echo "<td>" . $vehicle['quantity'] . "</td>";
                         echo "<td>";
                         echo "<a href='../db/edit_vehicle.php?id=" . $vehicle['id'] . "'>Edit</a> | ";
                         echo "<a href='../db/delete_vehicle.php?id=" . $vehicle['id'] . "'>Delete</a>";
@@ -98,6 +105,10 @@
                 <input type="text" id="model" name="model"><br>
                 <label for="year">Year:</label><br>
                 <input type="number" id="year" name="year" min="1900" max="2050"><br><br>
+                <label for="price">Price:</label><br>
+                <input type="text" id="price" name="price">
+                <label for="quantity">Quantity:</label><br>
+                <input type="number" id="quantity" name="quantity"><br><br>
                 <input id = "vehicle-button" style="font-weight: bold;border-radius: 50px; background-color: dodgerblue; color: black;" type="submit" value="Add Vehicle">
             </form><br><br>
         </div>
@@ -111,7 +122,7 @@
                 <input type="text" id="price" name="price"><br>
                 <label for="quantity">Quantity:</label><br>
                 <input type="number" id="quantity" name="quantity"><br><br>
-                <input id = "part-button" style="font-weight: bold;border-radius: 50px; background-color: dodgerblue; color: black;" type="submit" value="Add Part">
+                <input id = "part-button" style="margin-top: 62%;font-weight: bold;border-radius: 50px; background-color: dodgerblue; color: black;" type="submit" value="Add Part">
             </form>
         </div>
     </div>
@@ -158,7 +169,7 @@
         margin-left: 10%;
 
         width: 150%;
-        height: 500px;
+        height: 700px;
         background-color: #263541;
         border-radius: 25px 5px;
         color: whitesmoke;
