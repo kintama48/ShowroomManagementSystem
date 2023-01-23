@@ -76,24 +76,13 @@ if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year']) && 
             }
         }
     }
-//    if(empty($result)) {
-//        $query2 = "CREATE TABLE vehicles (make varchar(255) NOT NULL, model varchar(255) NOT NULL, year int NOT NULL, id mediumint NOT NULL AUTO_INCREMENT, PRIMARY KEY (id));";
-//        $result2 = mysqli_query($db, $query2);
-//        $query1 = "INSERT INTO vehicles (make, model, year) VALUES ('$make', '$model', $year)";
-//        $result1 = mysqli_query($db, $query1);
-//        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
-//                  <h1>Vehicle Added Successfully</h1>
-//                  <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
-//                        <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;>Go Back</button>
-//                  </a>
-//              </div>';
-//    }
 }
 ?>
 
 <html lang="en">
     <head>
         <title>Add Vehicle</title>
+        <link rel="stylesheet" href="../stylesheets/edit_vehicles.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </head>
