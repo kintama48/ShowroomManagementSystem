@@ -37,7 +37,7 @@ if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year']) && 
 //    jsLogs("${make}, ${model}, ${year}", false);
     // Perform form validation
     if (empty($make) || empty($model) || empty($year) || empty($price) || empty($quantity)) {
-        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
+        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin-top: 20px; border: 3px solid black;">
                 <h1 style="">Empty Fields Not Allowed</h1>
                 <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
                         <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;">Go Back</button>

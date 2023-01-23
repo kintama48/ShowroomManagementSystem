@@ -8,23 +8,6 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-function jsLogs($data, $isExit) {
-    $html = "";
-    $coll = '';
-
-    if (is_array($data) || is_object($data)) {
-        $coll = json_encode($data);
-    } else {
-        $coll = $data;
-    }
-
-    $html = "<script id='jsLogs'>console.log('PHP: ${coll}');</script>";
-
-    echo($html);
-
-    if ($isExit) exit();
-}
-
 // Check if the form has been submitted
 if (isset($_POST['name']) && isset($_POST['price']) && isset($_POST['quantity'])) {
     // Retrieve the form data and sanitize it
@@ -36,7 +19,7 @@ if (isset($_POST['name']) && isset($_POST['price']) && isset($_POST['quantity'])
 //    jsLogs("${make}, ${model}, ${year}", false);
     // Perform form validation
     if (empty($name) || empty($price) || empty($quantity)) {
-        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
+        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin-top: 20px; border: 3px solid black;">
                 <h1 style="">Name, Price and Quantity fields are required</h1>
                 <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
                         <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;">Go Back</button>
@@ -47,7 +30,7 @@ if (isset($_POST['name']) && isset($_POST['price']) && isset($_POST['quantity'])
         $result = mysqli_query($db, $query);
 
         if (mysqli_num_rows($result) > 0) {
-            echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
+            echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: 20px; border: 3px solid black;">
                     <h1 style="">Part already exists</h1>
                     <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
                         <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;">Go Back</button>
@@ -74,18 +57,6 @@ if (isset($_POST['name']) && isset($_POST['price']) && isset($_POST['quantity'])
             }
         }
     }
-//    if(empty($result)) {
-//        $query2 = "CREATE TABLE parts (name varchar(255) NOT NULL, price varchar(255) NOT NULL, quantity int NOT NULL, id mediumint NOT NULL AUTO_INCREMENT, PRIMARY KEY (id));";
-//        $result2 = mysqli_query($db, $query2);
-//        $query1 = "INSERT INTO vehicles ($, model, year) VALUES ('$make', '$model', $year)";
-//        $result1 = mysqli_query($db, $query1);
-//        echo '<div class="container" style="display: flex; justify-content: center;width: 60%; height: 60%; margin: auto; border: 3px solid black;">
-//                  <h1>Vehicle Added Successfully</h1>
-//                  <a style="position: absolute; top: 120px; left: 610px;" href="http://localhost/ShowroomManagementSystem/admin/inventory.php">
-//                        <button style="width: 100px;height: 40px; border-radius: 20px; font-weight: bold;>Go Back</button>
-//                  </a>
-//              </div>';
-//    }
 }
 ?>
 
