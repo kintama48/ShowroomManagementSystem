@@ -78,11 +78,14 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         $_SESSION["role"] = $row["role"];
         if ($_SESSION["role"] == "admin") {
             header("Location: admin/inventory.php");
+            exit();
         } else {
             header("Location: customer/customer_homepage.php");
+            exit();
         }
     } else {
         header("Location: invalid_login.php");
+        exit();
     }
 }
 ?>

@@ -1,6 +1,7 @@
 <!-- add_vehicle_cart.php -->
 <?php
 session_start();
+$db = mysqli_connect('localhost', 'mysql', '', 'test');
 
 // Check if the id parameter is set in the URL
 if (isset($_GET['id'])) {
@@ -8,10 +9,9 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // Connect to the database
-    $db = mysqli_connect('localhost', 'mysql', '', 'test');
 
     // Retrieve the item from the database
-    $query = "SELECT * FROM vehicles WHERE id = $id";
+    $query = "SELECT * FROM parts WHERE id = $id";
     $result = mysqli_query($db, $query);
     $item = mysqli_fetch_assoc($result);
 
@@ -31,8 +31,9 @@ if (isset($_GET['id'])) {
         // Otherwise, add a new item to the cart with quantity 1
         $item['quantity'] = 1;
         $item['type'] = 'vehicle';
-        array_push($_SESSION['cart'], $item);
+        $_SESSION['cart'][] = $item;
     }
+//    echo json_encode($_SESSION['cart']);
 }
 
 // Redirect the user back to the customer page

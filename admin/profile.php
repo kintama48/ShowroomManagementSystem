@@ -33,8 +33,8 @@
 
         <h5>
             <?php
-            // session_start();
-            echo $_SESSION['username'];
+             session_start();
+            echo $_SESSION['password'];
             // echo "PASSWORD";
             ?>
         </h5>

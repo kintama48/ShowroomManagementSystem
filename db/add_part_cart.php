@@ -2,13 +2,14 @@
 <?php
 session_start();
 
+$db = mysqli_connect('localhost', 'mysql', '', 'test');
+
 // Check if the id parameter is set in the URL
 if (isset($_GET['id'])) {
     // Get the id of the item to add to the cart
     $id = $_GET['id'];
 
     // Connect to the database
-    $db = mysqli_connect('localhost', 'mysql', '', 'test');
 
     // Retrieve the item from the database
     $query = "SELECT * FROM parts WHERE id = $id";
@@ -33,7 +34,7 @@ if (isset($_GET['id'])) {
         $item['type'] = 'part';
         array_push($_SESSION['cart'], $item);
     }
-//    echo json_encode($_SESSION['cart']);
+    echo json_encode($_SESSION['cart']);
 }
 
 // Redirect the user back to the customer page

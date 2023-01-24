@@ -1,7 +1,8 @@
 <?php
-session_start();
-
-
+$temp = session_start();
+if (!$temp) {
+    jsLogs("Session start failed", false);
+}
 function jsLogs($data, $isExit) {
     $html = "";
     $coll = '';
@@ -20,7 +21,7 @@ function jsLogs($data, $isExit) {
 }
 
 
-// Check if the cart session variable exists, if not create an empty cart array
+//// Check if the cart session variable exists, if not create an empty cart array
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
@@ -36,6 +37,7 @@ $total = 0;
 
 // Iterate through the cart items and calculate the total cost
 foreach ($_SESSION['cart'] as $item) {
+    jsLogs($item, false);
     if (gettype($item) == 'double') {
         continue;
     }

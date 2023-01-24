@@ -58,13 +58,11 @@
 <style>
     .styled-table {
         border-collapse: collapse;
-        margin: 25px 0;
         font-size: 0.9em;
         font-family: sans-serif;
         min-width: 400px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        margin-left:auto;
-        margin-right:auto;
+        margin: 25px auto;
         background-color: white;
     }
 
