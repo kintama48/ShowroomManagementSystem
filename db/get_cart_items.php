@@ -3,6 +3,7 @@ $temp = session_start();
 if (!$temp) {
     jsLogs("Session start failed", false);
 }
+session_start();
 function jsLogs($data, $isExit) {
     $html = "";
     $coll = '';

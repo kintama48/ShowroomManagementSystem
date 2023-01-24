@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
     // Connect to the database
 
     // Retrieve the item from the database
-    $query = "SELECT * FROM parts WHERE id = $id";
+    $query = "SELECT * FROM vehicles WHERE id = $id";
     $result = mysqli_query($db, $query);
     $item = mysqli_fetch_assoc($result);
 

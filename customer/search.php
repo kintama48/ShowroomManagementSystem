@@ -1,5 +1,6 @@
 <?php
 // Include the database connection file
+session_start();
 $conn = mysqli_connect('localhost', 'mysql', '', 'test');
 // Get the search query from the form
 

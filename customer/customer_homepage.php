@@ -1,4 +1,5 @@
 <!-- customer.php -->
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <title>Customer Page</title>
@@ -111,10 +112,8 @@
             // Include the code to retrieve the cart items from the session
 //            include '../db/get_cart_items.php';
 
-//            $temp = session_start();
-//            if (!$temp) {
-//                jsLogs("Session start failed", false);
-//            }
+            session_start();
+
             function jsLogs($data, $isExit)
             {
                 $html = "";
